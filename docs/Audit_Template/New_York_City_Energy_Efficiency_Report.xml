@@ -2742,7 +2742,7 @@
       <sch:assert test="not(auc:AirCooled)">element "auc:AirCooled" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:BuildingAutomationSystem)">element "auc:BuildingAutomationSystem" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CondenserPlantCondition)">element "auc:CondenserPlantCondition" is NOT RECOMMENDED</sch:assert>
-      <sch:assert test="not(auc:ControlSystemType)">element "auc:ControlSystemType" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ControlSystemTypes)">element "auc:ControlSystemTypes" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:GlycolCooledDryCooler)">element "auc:GlycolCooledDryCooler" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:GroundSource) &gt;= 0">element "auc:GroundSource" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:Location)">element "auc:Location" is NOT RECOMMENDED</sch:assert>
@@ -2812,7 +2812,7 @@
       <sch:assert test="not(@Status)">element "@Status" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:BuildingAutomationSystem) &gt;= 0">element "auc:BuildingAutomationSystem" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Chiller) &gt;= 0">element "auc:Chiller" is OPTIONAL</sch:assert>
-      <sch:assert test="count(auc:ControlSystemType) &gt;= 0">element "auc:ControlSystemType" is OPTIONAL</sch:assert>
+      <sch:assert test="count(auc:ControlSystemTypes) &gt;= 0">element "auc:ControlSystemTypes" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:CoolingPlantCondition) &gt;= 0">element "auc:CoolingPlantCondition" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:DistrictChilledWater) &gt;= 0">element "auc:DistrictChilledWater" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Location) &gt;= 0">element "auc:Location" is OPTIONAL</sch:assert>
@@ -2891,13 +2891,16 @@
       <sch:assert test="not(@Source)">element "@Source" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="(number(text()) = text()) and (number() &gt;= 0)">text "<sch:value-of select="text()"/>": element "text()" MUST be a number and MUST be greater than or equal to 0</sch:assert>
     </sch:rule>
-    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:ControlSystemType">
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:ControlSystemTypes">
+      <sch:assert test="count(auc:ControlSystemType) &gt;= 0">element "auc:ControlSystemType" is OPTIONAL</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:ControlSystemTypes/auc:ControlSystemType">
       <sch:assert test="not(auc:Analog)">element "auc:Analog" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:Digital) &gt;= 0">element "auc:Digital" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:Other)">element "auc:Other" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:Pneumatic) &gt;= 0">element "auc:Pneumatic" is OPTIONAL</sch:assert>
     </sch:rule>
-    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:ControlSystemType/auc:Digital">
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:ControlSystemTypes/auc:ControlSystemType/auc:Digital">
       <sch:assert test="not(auc:CommunicationProtocol)">element "auc:CommunicationProtocol" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:CoolingPlantCondition">
@@ -3020,7 +3023,7 @@
       <sch:assert test="not(@Status)">element "@Status" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:Boiler) &gt;= 0">element "auc:Boiler" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:BuildingAutomationSystem) &gt;= 0">element "auc:BuildingAutomationSystem" is OPTIONAL</sch:assert>
-      <sch:assert test="count(auc:ControlSystemType) &gt;= 0">element "auc:ControlSystemType" is OPTIONAL</sch:assert>
+      <sch:assert test="count(auc:ControlSystemTypes) &gt;= 0">element "auc:ControlSystemTypes" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:DistrictHeating) &gt;= 0">element "auc:DistrictHeating" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:HeatingPlantCondition) &gt;= 0">element "auc:HeatingPlantCondition" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Location) &gt;= 0">element "auc:Location" is OPTIONAL</sch:assert>
@@ -3109,13 +3112,16 @@
       <sch:assert test="not(@Source)">element "@Source" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="(number(text()) = text()) and (number() &gt;= 0)">text "<sch:value-of select="text()"/>": element "text()" MUST be a number and MUST be greater than or equal to 0</sch:assert>
     </sch:rule>
-    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/auc:ControlSystemType">
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/auc:ControlSystemTypes">
+      <sch:assert test="count(auc:ControlSystemType) &gt;= 0">element "auc:ControlSystemType" is OPTIONAL</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/auc:ControlSystemTypes/auc:ControlSystemType">
       <sch:assert test="not(auc:Analog)">element "auc:Analog" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:Digital) &gt;= 0">element "auc:Digital" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:Other)">element "auc:Other" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:Pneumatic) &gt;= 0">element "auc:Pneumatic" is OPTIONAL</sch:assert>
     </sch:rule>
-    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/auc:ControlSystemType/auc:Digital">
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/auc:ControlSystemTypes/auc:ControlSystemType/auc:Digital">
       <sch:assert test="not(auc:CommunicationProtocol)">element "auc:CommunicationProtocol" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/auc:DistrictHeating">
@@ -4651,6 +4657,7 @@
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:PlugLoads/auc:PlugLoad[auc:PlugLoadType/text() = 'Kitchen Equipment']/auc:UserDefinedFields">
       <sch:assert test="count(auc:UserDefinedField) &gt;= 0">element "auc:UserDefinedField" is OPTIONAL</sch:assert>
+      <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'Gross Floor Area Is Not Applicable']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'Gross Floor Area Is Not Applicable']/auc:FieldValue" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'Gross Floor Area']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'Gross Floor Area']/auc:FieldValue" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'Plug Load Peak Power Is Not Applicable']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'Plug Load Peak Power Is Not Applicable']/auc:FieldValue" is OPTIONAL</sch:assert>
     </sch:rule>
@@ -4659,7 +4666,10 @@
       <sch:assert test="count(auc:FieldValue) &gt;= 1">element "auc:FieldValue" is REQUIRED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:PlugLoads/auc:PlugLoad[auc:PlugLoadType/text() = 'Kitchen Equipment']/auc:UserDefinedFields/auc:UserDefinedField/auc:FieldName">
-      <sch:assert test="contains('_Gross Floor Area_ _Plug Load Peak Power Is Not Applicable_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Gross Floor Area" or "Plug Load Peak Power Is Not Applicable"</sch:assert>
+      <sch:assert test="contains('_Gross Floor Area_ _Gross Floor Area Is Not Applicable_ _Plug Load Peak Power Is Not Applicable_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Gross Floor Area", "Gross Floor Area Is Not Applicable", or "Plug Load Peak Power Is Not Applicable"</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:PlugLoads/auc:PlugLoad[auc:PlugLoadType/text() = 'Kitchen Equipment']/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Gross Floor Area Is Not Applicable']/auc:FieldValue">
+      <sch:assert test="contains('_false_ _true_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "false" or "true"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:PlugLoads/auc:PlugLoad[auc:PlugLoadType/text() = 'Kitchen Equipment']/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Gross Floor Area']/auc:FieldValue">
       <sch:assert test="(number(text()) = text()) and (number() &gt;= 0)">text "<sch:value-of select="text()"/>": element "text()" MUST be a number and MUST be greater than or equal to 0</sch:assert>
