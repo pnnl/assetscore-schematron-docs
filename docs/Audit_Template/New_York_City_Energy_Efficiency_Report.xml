@@ -373,7 +373,7 @@
       <sch:assert test="count(auc:MeasureName) &gt;= 1">element "auc:MeasureName" is REQUIRED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Measures/auc:Measure/auc:TechnologyCategories/auc:TechnologyCategory/auc:BuildingEnvelopeModifications/auc:MeasureName">
-      <sch:assert test="contains('_Add attic/knee wall insulation_ _Add shading devices_ _Add window films_ _Air seal envelope_ _Clean and/or repair_ _Close shaft vents for elevators or stairwells_ _Increase ceiling insulation_ _Increase floor insulation_ _Increase roof insulation_ _Increase wall insulation_ _Install cool/green roof_ _Install or replace solar screens_ _Insulate attic hatch / stair box_ _Insulate foundation_ _Insulate thermal bypasses_ _Other_ _Replace glazing_ _Replace windows_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Add attic/knee wall insulation", "Add shading devices", "Add window films", "Air seal envelope", "Clean and/or repair", "Close shaft vents for elevators or stairwells", "Increase ceiling insulation", "Increase floor insulation", "Increase roof insulation", "Increase wall insulation", "Install cool/green roof", "Install or replace solar screens", "Insulate attic hatch / stair box", "Insulate foundation", "Insulate thermal bypasses", "Other", "Replace glazing", or "Replace windows"</sch:assert>
+      <sch:assert test="contains('_Add attic/knee wall insulation_ _Add shading devices_ _Add window films_ _Air seal envelope_ _Clean and/or repair_ _Close elevator and/or stairwell shaft vents_ _Increase ceiling insulation_ _Increase floor insulation_ _Increase roof insulation_ _Increase wall insulation_ _Install cool/green roof_ _Install or replace solar screens_ _Insulate attic hatch / stair box_ _Insulate foundation_ _Insulate thermal bypasses_ _Other_ _Replace glazing_ _Replace windows_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Add attic/knee wall insulation", "Add shading devices", "Add window films", "Air seal envelope", "Clean and/or repair", "Close elevator and/or stairwell shaft vents", "Increase ceiling insulation", "Increase floor insulation", "Increase roof insulation", "Increase wall insulation", "Install cool/green roof", "Install or replace solar screens", "Insulate attic hatch / stair box", "Insulate foundation", "Insulate thermal bypasses", "Other", "Replace glazing", or "Replace windows"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Measures/auc:Measure/auc:TechnologyCategories/auc:TechnologyCategory/auc:ChilledWaterHotWaterAndSteamDistributionSystems">
       <sch:assert test="count(auc:MeasureName) &gt;= 1">element "auc:MeasureName" is REQUIRED</sch:assert>
@@ -559,7 +559,6 @@
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and (count(auc:Normalization) &gt; 0)]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and (count(auc:Normalization) &gt; 0)]" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and not(auc:Normalization)]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and not(auc:Normalization)]" is OPTIONAL</sch:assert>
-      <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0)) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0)" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Annual Summary')]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Annual Summary')]" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Available Energy')]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Available Energy')]" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Energy Deliveries')]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Energy Deliveries')]" is OPTIONAL</sch:assert>
@@ -568,6 +567,7 @@
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Energy Uses')]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Energy Uses')]" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Shared Resource System Annual Summary')]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Shared Resource System Annual Summary')]" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Shared Resource System Energy Uses')]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Shared Resource System Energy Uses')]" is OPTIONAL</sch:assert>
+      <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0)]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0)]" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:PackageOfMeasures) &gt; 0)]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:PackageOfMeasures) &gt; 0)]" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Scenario[(count(auc:ScenarioType/auc:Target) &gt; 0)]) &gt;= 0">element "auc:Scenario[(count(auc:ScenarioType/auc:Target) &gt; 0)]" is OPTIONAL</sch:assert>
     </sch:rule>
@@ -669,6 +669,7 @@
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:ScenarioType/auc:Benchmark">
       <sch:assert test="not(auc:BenchmarkTool)">element "auc:BenchmarkTool" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:BenchmarkType) &gt;= 0">element "auc:BenchmarkType" is OPTIONAL</sch:assert>
+      <sch:assert test="count(auc:BenchmarkValue) &gt;= 0">element "auc:BenchmarkValue" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:BenchmarkYear) &gt;= 0">element "auc:BenchmarkYear" is OPTIONAL</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:ScenarioType/auc:Benchmark/auc:BenchmarkType">
@@ -711,6 +712,10 @@
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:ScenarioType/auc:Benchmark/auc:BenchmarkType/auc:StandardPractice/auc:StandardPracticeDescription">
       <sch:assert test="contains('_ASHRAE Building Energy Quotient_ _CIBSE Benchmarking_ _DOE Building Performance Database_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "ASHRAE Building Energy Quotient", "CIBSE Benchmarking", or "DOE Building Performance Database"</sch:assert>
     </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:ScenarioType/auc:Benchmark/auc:BenchmarkValue">
+      <sch:assert test="not(@Source)">element "@Source" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="(number(text()) = text()) and (number() &gt;= 0)">text "<sch:value-of select="text()"/>": element "text()" MUST be a number and MUST be greater than or equal to 0</sch:assert>
+    </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:ScenarioType/auc:Benchmark/auc:BenchmarkYear">
       <sch:assert test="(number(text()) = text()) and (number() &gt;= 1800)">text "<sch:value-of select="text()"/>": element "text()" MUST be a number and MUST be greater than or equal to 1800</sch:assert>
     </sch:rule>
@@ -719,6 +724,7 @@
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:UserDefinedFields">
       <sch:assert test="count(auc:UserDefinedField) &gt;= 0">element "auc:UserDefinedField" is OPTIONAL</sch:assert>
+      <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'Benchmark Value Is Not Applicable']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'Benchmark Value Is Not Applicable']/auc:FieldValue" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'Benchmark Year Is Not Applicable']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'Benchmark Year Is Not Applicable']/auc:FieldValue" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'San Francisco Affidavit Benchmark Affirmation']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'San Francisco Affidavit Benchmark Affirmation']/auc:FieldValue" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'San Francisco Affidavit Benchmark Not Verified Reason']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'San Francisco Affidavit Benchmark Not Verified Reason']/auc:FieldValue" is OPTIONAL</sch:assert>
@@ -730,7 +736,10 @@
       <sch:assert test="count(auc:FieldValue) &gt;= 1">element "auc:FieldValue" is REQUIRED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:UserDefinedFields/auc:UserDefinedField/auc:FieldName">
-      <sch:assert test="contains('_Benchmark Year Is Not Applicable_ _San Francisco Affidavit Benchmark Affirmation_ _San Francisco Affidavit Benchmark Signature_ _San Francisco Affidavit Benchmark Not Verified Reason_ _Scenario Notes For Not Applicable_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Benchmark Year Is Not Applicable", "San Francisco Affidavit Benchmark Affirmation", "San Francisco Affidavit Benchmark Signature", "San Francisco Affidavit Benchmark Not Verified Reason", or "Scenario Notes For Not Applicable"</sch:assert>
+      <sch:assert test="contains('_Benchmark Value Is Not Applicable_ _Benchmark Year Is Not Applicable_ _San Francisco Affidavit Benchmark Affirmation_ _San Francisco Affidavit Benchmark Signature_ _San Francisco Affidavit Benchmark Not Verified Reason_ _Scenario Notes For Not Applicable_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Benchmark Value Is Not Applicable", "Benchmark Year Is Not Applicable", "San Francisco Affidavit Benchmark Affirmation", "San Francisco Affidavit Benchmark Signature", "San Francisco Affidavit Benchmark Not Verified Reason", or "Scenario Notes For Not Applicable"</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Benchmark Value Is Not Applicable']/auc:FieldValue">
+      <sch:assert test="contains('_false_ _true_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "false" or "true"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Benchmark Year Is Not Applicable']/auc:FieldValue">
       <sch:assert test="contains('_false_ _true_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "false" or "true"</sch:assert>
@@ -999,18 +1008,13 @@
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and not(auc:Normalization)]/auc:ScenarioType/auc:CurrentBuilding">
       <sch:assert test="not(auc:AssetScore)">element "auc:AssetScore" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CalculationMethod)">element "auc:CalculationMethod" is NOT RECOMMENDED</sch:assert>
-      <sch:assert test="count(auc:ENERGYSTARScore) &gt;= 0">element "auc:ENERGYSTARScore" is OPTIONAL</sch:assert>
-    </sch:rule>
-    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and not(auc:Normalization)]/auc:ScenarioType/auc:CurrentBuilding/auc:ENERGYSTARScore">
-      <sch:assert test="not(@Source)">element "@Source" is NOT RECOMMENDED</sch:assert>
-      <sch:assert test="(number(text()) = text()) and (number() &gt;= 0)">text "<sch:value-of select="text()"/>": element "text()" MUST be a number and MUST be greater than or equal to 0</sch:assert>
+      <sch:assert test="not(auc:ENERGYSTARScore)">element "auc:ENERGYSTARScore" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and not(auc:Normalization)]/auc:TemporalStatus">
       <sch:assert test="contains('_Current_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Current"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and not(auc:Normalization)]/auc:UserDefinedFields">
       <sch:assert test="count(auc:UserDefinedField) &gt;= 0">element "auc:UserDefinedField" is OPTIONAL</sch:assert>
-      <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'ENERGY STAR Score Is Not Applicable']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'ENERGY STAR Score Is Not Applicable']/auc:FieldValue" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'Year Of Degree Days']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'Year Of Degree Days']/auc:FieldValue" is OPTIONAL</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and not(auc:Normalization)]/auc:UserDefinedFields/auc:UserDefinedField">
@@ -1018,21 +1022,18 @@
       <sch:assert test="count(auc:FieldValue) &gt;= 1">element "auc:FieldValue" is REQUIRED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and not(auc:Normalization)]/auc:UserDefinedFields/auc:UserDefinedField/auc:FieldName">
-      <sch:assert test="contains('_ENERGY STAR Score Is Not Applicable_ _Year Of Degree Days_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "ENERGY STAR Score Is Not Applicable" or "Year Of Degree Days"</sch:assert>
-    </sch:rule>
-    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and not(auc:Normalization)]/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'ENERGY STAR Score Is Not Applicable']/auc:FieldValue">
-      <sch:assert test="contains('_false_ _true_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "false" or "true"</sch:assert>
+      <sch:assert test="contains('_Year Of Degree Days_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Year Of Degree Days"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:CurrentBuilding) &gt; 0) and not(auc:Normalization)]/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Year Of Degree Days']/auc:FieldValue">
       <sch:assert test="(number(text()) = text()) and (number() &gt;= 1800)">text "<sch:value-of select="text()"/>": element "text()" MUST be a number and MUST be greater than or equal to 1800</sch:assert>
     </sch:rule>
-    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0)">
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0)]">
       <sch:assert test="count(auc:UserDefinedFields) &gt;= 1">element "auc:UserDefinedFields" is REQUIRED</sch:assert>
     </sch:rule>
-    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0)/auc:UserDefinedFields">
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0)]/auc:UserDefinedFields">
       <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue) &gt;= 1">element "auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue" is REQUIRED</sch:assert>
     </sch:rule>
-    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0)/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue">
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0)]/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue">
       <sch:assert test="contains('_Audit Template Annual Summary_ _Audit Template Available Energy_ _Audit Template Energy Deliveries_ _Audit Template Energy Meter Readings_ _Audit Template Energy Supply Sources_ _Audit Template Energy Uses_ _Audit Template Shared Resource System Annual Summary_ _Audit Template Shared Resource System Energy Uses_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Audit Template Annual Summary", "Audit Template Available Energy", "Audit Template Energy Deliveries", "Audit Template Energy Meter Readings", "Audit Template Energy Supply Sources", "Audit Template Energy Uses", "Audit Template Shared Resource System Annual Summary", or "Audit Template Shared Resource System Energy Uses"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:PackageOfMeasures) &gt; 0)]">
