@@ -8,9 +8,7 @@ The following Schematron documents are available:
 
 | Application | Use Case | Status | Link |
 | - | - | - | - |
-| Audit Template | New York City Energy Efficiency Report | Incomplete<sup>1</sup> | [XML](https://github.com/pnnl/assetscore-schematron-docs/blob/master/docs/Audit_Template/New_York_City_Energy_Efficiency_Report.xml) |
-
-1. Does not validate `auc:Scenario` elements in [BuildingSync<sup>&reg;</sup>](https://buildingsync.net) XML documents.
+| Audit Template | New York City Energy Efficiency Report | Complete | [XML](https://github.com/pnnl/assetscore-schematron-docs/blob/master/docs/Audit_Template/New_York_City_Energy_Efficiency_Report.xml) |
 
 ## License
 
