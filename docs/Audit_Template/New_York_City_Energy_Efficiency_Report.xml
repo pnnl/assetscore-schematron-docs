@@ -683,6 +683,7 @@
       <sch:assert test="count(auc:BenchmarkType) &gt;= 0">element "auc:BenchmarkType" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:BenchmarkValue) &gt;= 0">element "auc:BenchmarkValue" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:BenchmarkYear) &gt;= 0">element "auc:BenchmarkYear" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:LinkedPremises)">element "auc:LinkedPremises" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:ScenarioType/auc:Benchmark/auc:BenchmarkType">
       <sch:assert test="count(auc:CBECS) &gt;= 0">element "auc:CBECS" is OPTIONAL</sch:assert>
@@ -2844,6 +2845,7 @@
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:OverallWindowToWallRatio">
       <sch:assert test="not(@Source)">element "@Source" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="(number(text()) = text()) and (number() &gt;= 0) and (number() &lt;= 1)">text "<sch:value-of select="text()"/>": element "text()" MUST be a number, MUST be greater than or equal to 0, and MUST be less than or equal to 1</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Ownership">
       <sch:assert test="contains('_Corporation/partnership/LLC_ _Individual_ _Non-profit organization_ _Other_ _Privately owned_ _Property management company_ _Religious organization_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Corporation/partnership/LLC", "Individual", "Non-profit organization", "Other", "Privately owned", "Property management company", or "Religious organization"</sch:assert>
