@@ -5296,12 +5296,9 @@
       <sch:assert test="not(auc:CompressorStaging)">element "auc:CompressorStaging" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CompressorType)">element "auc:CompressorType" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CondenserPlantIDs)">element "auc:CondenserPlantIDs" is NOT RECOMMENDED</sch:assert>
-      <sch:assert test="count(auc:DXSystemType) &gt;= 1">element "auc:DXSystemType" is REQUIRED</sch:assert>
+      <sch:assert test="not(auc:DXSystemType)">element "auc:DXSystemType" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Refrigerant)">element "auc:Refrigerant" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:RefrigerantChargeFactor)">element "auc:RefrigerantChargeFactor" is NOT RECOMMENDED</sch:assert>
-    </sch:rule>
-    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[not(auc:Plants)]/auc:HeatingAndCoolingSystems/auc:CoolingSources/auc:CoolingSourceType/auc:DX/auc:DXSystemType">
-      <sch:assert test="contains('_Packaged terminal heat pump (PTHP)_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Packaged terminal heat pump (PTHP)"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[not(auc:Plants)]/auc:HeatingAndCoolingSystems/auc:CoolingSources/auc:Location">
       <sch:assert test="contains('_Attic_ _Closet_ _Exterior_ _Garage_ _Interior_ _Mechanical Floor_ _Mechanical Room_ _Other_ _Penthouse_ _Roof_ _Unknown_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Attic", "Closet", "Exterior", "Garage", "Interior", "Mechanical Floor", "Mechanical Room", "Other", "Penthouse", "Roof", or "Unknown"</sch:assert>
