@@ -8,7 +8,11 @@
       <sch:assert test="count(auc:BuildingSync) &gt;= 1">element "auc:BuildingSync" is REQUIRED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync">
+      <sch:assert test="count(@version) &gt;= 1">element "@version" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:Facilities) &gt;= 1">element "auc:Facilities" is REQUIRED</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/@version">
+      <sch:assert test="contains('_2.0.0_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "2.0.0"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities">
       <sch:assert test="count(auc:Facility) &gt;= 1">element "auc:Facility" is REQUIRED</sch:assert>
@@ -47,6 +51,9 @@
       <sch:assert test="not(auc:PostalCodePlus4)">element "auc:PostalCodePlus4" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:State) &gt;= 0">element "auc:State" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:StreetAddressDetail) &gt;= 0">element "auc:StreetAddressDetail" is OPTIONAL</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Contacts/auc:Contact/auc:Address/auc:State">
+      <sch:assert test="contains('_AK_ _AL_ _AR_ _AZ_ _CA_ _CO_ _CT_ _DC_ _DE_ _FL_ _GA_ _HI_ _IA_ _ID_ _IL_ _IN_ _KS_ _KY_ _LA_ _MA_ _MD_ _ME_ _MI_ _MN_ _MO_ _MS_ _MT_ _NC_ _ND_ _NE_ _NH_ _NJ_ _NM_ _NV_ _NY_ _OH_ _OK_ _OR_ _PA_ _RI_ _SC_ _SD_ _TN_ _TX_ _UM_ _UT_ _VA_ _VT_ _WA_ _WI_ _WV_ _WY_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UM", "UT", "VA", "VT", "WA", "WI", "WV", or "WY"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Contacts/auc:Contact/auc:Address/auc:StreetAddressDetail">
       <sch:assert test="not(auc:Complex)">element "auc:Complex" is NOT RECOMMENDED</sch:assert>
@@ -500,6 +507,7 @@
       <sch:assert test="not(auc:ElectricitySourcedFromOnsiteRenewableSystems)">element "auc:ElectricitySourcedFromOnsiteRenewableSystems" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:EndUse) &gt;= 1">element "auc:EndUse" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:EnergyCost) &gt;= 0">element "auc:EnergyCost" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:EnergyCostIndex)">element "auc:EnergyCostIndex" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:OnsiteRenewableSystemElectricityExported)">element "auc:OnsiteRenewableSystemElectricityExported" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:ResourceBoundary) &gt;= 1">element "auc:ResourceBoundary" is REQUIRED</sch:assert>
       <sch:assert test="not(auc:SiteEnergyUse)">element "auc:SiteEnergyUse" is NOT RECOMMENDED</sch:assert>
@@ -4129,6 +4137,7 @@
       <sch:assert test="not(auc:FanSize)">element "auc:FanSize" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FanType)">element "auc:FanType" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:InstalledFlowRate)">element "auc:InstalledFlowRate" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:LinkedPremises)">element "auc:LinkedPremises" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:LinkedSystemIDs) &gt;= 1">element "auc:LinkedSystemIDs" is REQUIRED</sch:assert>
       <sch:assert test="not(auc:Location)">element "auc:Location" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Manufacturer)">element "auc:Manufacturer" is NOT RECOMMENDED</sch:assert>
@@ -6107,6 +6116,7 @@
       <sch:assert test="not(auc:Controls)">element "auc:Controls" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:DriveEfficiency)">element "auc:DriveEfficiency" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FullLoadAmps)">element "auc:FullLoadAmps" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:LinkedPremises)">element "auc:LinkedPremises" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:LinkedSystemIDs) &gt;= 1">element "auc:LinkedSystemIDs" is REQUIRED</sch:assert>
       <sch:assert test="not(auc:Location)">element "auc:Location" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Manufacturer)">element "auc:Manufacturer" is NOT RECOMMENDED</sch:assert>
