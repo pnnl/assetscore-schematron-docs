@@ -4,6 +4,156 @@
   <sch:ns prefix="auc" uri="http://buildingsync.net/schemas/bedes-auc/2019"/>
   <sch:pattern>
     <sch:title>New York City Energy Efficiency Report</sch:title>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Measures/auc:Measure/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID]">
+      <sch:assert test="auc:Measures/auc:Measure/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/@ID/text()">element "auc:Measures/auc:Measure/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Measures/auc:Measure/auc:LinkedPremises/auc:Site/auc:LinkedSiteID]">
+      <sch:assert test="auc:Measures/auc:Measure/auc:LinkedPremises/auc:Site/auc:LinkedSiteID/@IDref/text() = auc:Sites/auc:Site[count(auc:Buildings/auc:Building) &gt;= 1]/@ID/text()">element "auc:Measures/auc:Measure/auc:LinkedPremises/auc:Site/auc:LinkedSiteID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Reports/auc:Report/auc:AuditorContactID]">
+      <sch:assert test="auc:Reports/auc:Report/auc:AuditorContactID/@IDref/text() = auc:Contacts/auc:Contact/@ID/text()">element "auc:Reports/auc:Report/auc:AuditorContactID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Reports/auc:Report/auc:LinkedPremisesOrSystem/auc:Building/auc:LinkedBuildingID]">
+      <sch:assert test="auc:Reports/auc:Report/auc:LinkedPremisesOrSystem/auc:Building/auc:LinkedBuildingID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/@ID/text()">element "auc:Reports/auc:Report/auc:LinkedPremisesOrSystem/auc:Building/auc:LinkedBuildingID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Reports/auc:Report/auc:LinkedPremisesOrSystem/auc:Site/auc:LinkedSiteID]">
+      <sch:assert test="auc:Reports/auc:Report/auc:LinkedPremisesOrSystem/auc:Site/auc:LinkedSiteID/@IDref/text() = auc:Sites/auc:Site[count(auc:Buildings/auc:Building) &gt;= 1]/@ID/text()">element "auc:Reports/auc:Report/auc:LinkedPremisesOrSystem/auc:Site/auc:LinkedSiteID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Reports/auc:Report/auc:Qualifications/auc:Qualification/auc:CertifiedAuditTeamMemberContactID]">
+      <sch:assert test="auc:Reports/auc:Report/auc:Qualifications/auc:Qualification/auc:CertifiedAuditTeamMemberContactID/@IDref/text() = auc:Contacts/auc:Contact/@ID/text()">element "auc:Reports/auc:Report/auc:Qualifications/auc:Qualification/auc:CertifiedAuditTeamMemberContactID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID]">
+      <sch:assert test="auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text() = auc:Sites/auc:Sites/auc:Buildings/auc:Building/@ID/text()">element "auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:LinkedPremises/auc:Site/auc:LinkedSiteID]">
+      <sch:assert test="auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:LinkedPremises/auc:Site/auc:LinkedSiteID/@IDref/text() = auc:Sites/auc:Sites[count(auc:Buildings/auc:Building) &gt;= 1]/@ID/text()">element "auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:LinkedPremises/auc:Site/auc:LinkedSiteID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:ScenarioType/auc:PackageOfMeasures/auc:MeasureIDs/auc:MeasureID]">
+      <sch:assert test="auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:ScenarioType/auc:PackageOfMeasures/auc:MeasureIDs/auc:MeasureID/@IDref/text() = auc:Measures/auc:Measure/@ID/text()">element "auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:ScenarioType/auc:PackageOfMeasures/auc:MeasureIDs/auc:MeasureID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:AllResourceTotals/auc:AllResourceTotal/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource System ID']/auc:FieldValue]">
+      <sch:assert test="auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:AllResourceTotals/auc:AllResourceTotal/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource System ID']/auc:FieldValue/text() = auc:Systems/*/*/@ID/text()">element "auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:AllResourceTotals/auc:AllResourceTotal/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource System ID']/auc:FieldValue/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource System ID']/auc:FieldValue]">
+      <sch:assert test="auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource System ID']/auc:FieldValue/text() = auc:Systems/*/*/@ID/text()">element "auc:Reports/auc:Report/auc:Scenarios/auc:Scenario/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource System ID']/auc:FieldValue/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:ExteriorFloors/auc:ExteriorFloor/auc:ExteriorFloorID]">
+      <sch:assert test="auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:ExteriorFloors/auc:ExteriorFloor/auc:ExteriorFloorID/@IDref/text() = auc:Systems/auc:ExteriorFloorSystems/auc:ExteriorFloorSystem/@ID/text()">auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section/auc:ExteriorFloors/auc:ExteriorFloor/auc:ExteriorFloorID/@IDref/text()</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Foundations/auc:Foundation/auc:FoundationID]">
+      <sch:assert test="auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Foundations/auc:Foundation/auc:FoundationID/@IDref/text() = auc:Systems/auc:FoundationSystems/auc:FoundationSystem/@ID/text()">element "auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section/auc:Foundations/auc:Foundation/auc:FoundationID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Roofs/auc:Roof/auc:RoofID]">
+      <sch:assert test="auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Roofs/auc:Roof/auc:RoofID/@IDref/text() = auc:Systems/auc:RoofSystems/auc:RoofSystem/@ID/text()">element "auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section/auc:Roofs/auc:Roof/auc:RoofID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Roofs/auc:Roof/auc:RoofID/auc:SkylightIDs/auc:SkylightID]">
+      <sch:assert test="auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Roofs/auc:Roof/auc:RoofID/auc:SkylightIDs/auc:SkylightID/@IDref/text() = auc:Systems/auc:FenestrationSystems/auc:FenestrationSystem[auc:FenestrationType/auc:Skylight]/@ID/text()">element "auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section/auc:Roofs/auc:Roof/auc:RoofID/auc:SkylightIDs/auc:SkylightID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Sides/auc:Side/auc:DoorID]">
+      <sch:assert test="auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Sides/auc:Side/auc:DoorID/@IDref/text() = auc:Systems/auc:FenestrationSystems/auc:FenestrationSystem[auc:FenestrationType/auc:Door]/@ID/text()">auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section/auc:Sides/auc:Side/auc:DoorID/@IDref/text()</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Sides/auc:Side/auc:WallID]">
+      <sch:assert test="auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Sides/auc:Side/auc:WallID/@IDref/text() = auc:Systems/auc:WallSystems/auc:WallSystem/@ID/text()">element "auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section/auc:Sides/auc:Side/auc:WallID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Sides/auc:Side/auc:WindowID]">
+      <sch:assert test="auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Whole building']/auc:Sides/auc:Side/auc:WindowID/@IDref/text() = auc:Systems/auc:FenestrationSystems/auc:FenestrationSystem[auc:FenestrationType/auc:Window]/@ID/text()">element "auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section/auc:Sides/auc:Side/auc:WindowID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Space function']/auc:ThermalZones/auc:ThermalZone/auc:HVACScheduleIDs/auc:HVACScheduleID]">
+      <sch:assert test="auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Space function']/auc:ThermalZones/auc:ThermalZone/auc:HVACScheduleIDs/auc:HVACScheduleID/@IDref/text() = auc:Schedules/auc:Schedule/@ID/text()">element "auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section/auc:ThermalZones/auc:ThermalZone/auc:HVACScheduleIDs/auc:HVACScheduleID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:AirInfiltrationSystems/auc:AirInfiltrationSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID]">
+      <sch:assert test="auc:Systems/auc:AirInfiltrationSystems/auc:AirInfiltrationSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/@ID/text()">element "auc:Systems/auc:AirInfiltrationSystems/auc:AirInfiltrationSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:ConveyanceSystems/auc:ConveyanceSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID]">
+      <sch:assert test="auc:Systems/auc:ConveyanceSystems/auc:ConveyanceSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/@ID/text()">element "auc:Systems/auc:ConveyanceSystems/auc:ConveyanceSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:ConveyanceSystems/auc:ConveyanceSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID]">
+      <sch:assert test="auc:Systems/auc:ConveyanceSystems/auc:ConveyanceSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Space function']/@ID/text()">element "auc:Systems/auc:ConveyanceSystems/auc:ConveyanceSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:CriticalITSystems/auc:CriticalITSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID]">
+      <sch:assert test="auc:Systems/auc:CriticalITSystems/auc:CriticalITSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/@ID/text()">element "auc:Systems/auc:CriticalITSystems/auc:CriticalITSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:DomesticHotWaterSystems/auc:DomesticHotWaterSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID]">
+      <sch:assert test="auc:Systems/auc:DomesticHotWaterSystems/auc:DomesticHotWaterSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/@ID/text()">element "auc:Systems/auc:DomesticHotWaterSystems/auc:DomesticHotWaterSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:DomesticHotWaterSystems/auc:DomesticHotWaterSystem/auc:DomesticHotWaterType/auc:StorageTank/auc:TankHeatingType/auc:Indirect/auc:IndirectTankHeatingSource/auc:SpaceHeatingSystem/auc:HeatingPlantID]">
+      <sch:assert test="auc:Systems/auc:DomesticHotWaterSystems/auc:DomesticHotWaterSystem/auc:DomesticHotWaterType/auc:StorageTank/auc:TankHeatingType/auc:Indirect/auc:IndirectTankHeatingSource/auc:SpaceHeatingSystem/auc:HeatingPlantID/@IDref/text() = auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/@ID/text()">element "auc:Systems/auc:DomesticHotWaterSystems/auc:DomesticHotWaterSystem/auc:DomesticHotWaterType/auc:StorageTank/auc:TankHeatingType/auc:Indirect/auc:IndirectTankHeatingSource/auc:SpaceHeatingSystem/auc:HeatingPlantID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:FanSystems/auc:FanSystem/auc:LinkedSystemIDs/auc:LinkedSystemID]">
+      <sch:assert test="auc:Systems/auc:FanSystems/auc:FanSystem/auc:LinkedSystemIDs/auc:LinkedSystemID/@IDref/text() = auc:Systems/auc:HVACSystems/auc:HVACSystem/@ID/text()">element "auc:Systems/auc:FanSystems/auc:FanSystem/auc:LinkedSystemIDs/auc:LinkedSystemID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:FoundationSystems/auc:FoundationSystem/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Linked Wall ID']/auc:FieldValue]">
+      <sch:assert test="auc:Systems/auc:FoundationSystems/auc:FoundationSystem/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Linked Wall ID']/auc:FieldValue/text() = auc:Systems/auc:WallSystems/auc:WallSystem/@ID/text()">element "auc:Systems/auc:FoundationSystems/auc:FoundationSystem/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Linked Wall ID']/auc:FieldValue/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:HeatingAndCoolingSystems/auc:CoolingSources/auc:CoolingSource/auc:CoolingSourceType/auc:CoolingPlantID]">
+      <sch:assert test="auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:HeatingAndCoolingSystems/auc:CoolingSources/auc:CoolingSource/auc:CoolingSourceType/auc:CoolingPlantID/@IDref/text() = auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/@ID/text()">element "auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:HeatingAndCoolingSystems/auc:CoolingSources/auc:CoolingSource/auc:CoolingSourceType/auc:CoolingPlantID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:HeatingAndCoolingSystems/auc:Deliveries/auc:Delivery/auc:DeliveryType/auc:CentralAirDistribution/auc:ReheatPlantID]">
+      <sch:assert test="auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:HeatingAndCoolingSystems/auc:Deliveries/auc:Delivery/auc:DeliveryType/auc:CentralAirDistribution/auc:ReheatPlantID/@IDref/text() = auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/@ID/text()">element "auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:HeatingAndCoolingSystems/auc:Deliveries/auc:Delivery/auc:DeliveryType/auc:CentralAirDistribution/auc:ReheatPlantID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:HeatingAndCoolingSystems/auc:HeatingSources/auc:HeatingSource/auc:HeatingSourceType/auc:SourceHeatingPlantID]">
+      <sch:assert test="auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:HeatingAndCoolingSystems/auc:HeatingSources/auc:HeatingSource/auc:HeatingSourceType/auc:SourceHeatingPlantID/@IDref/text() = auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/@ID/text()">element "auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:HeatingAndCoolingSystems/auc:HeatingSources/auc:HeatingSource/auc:HeatingSourceType/auc:SourceHeatingPlantID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID]">
+      <sch:assert test="auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/@ID/text()">element "auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID]">
+      <sch:assert test="auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Space function']/@ID/text()">element "auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:LinkedPremises/auc:Site/auc:LinkedSiteID]">
+      <sch:assert test="auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:LinkedPremises/auc:Site/auc:LinkedSiteID/@IDref/text() = auc:Sites/auc:Site[count(auc:Buildings/auc:Building) &gt;= 1]/@ID/text()">element "auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:LinkedPremises/auc:Site/auc:LinkedSiteID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CondenserPlants/auc:CondenserPlant/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource Site ID']/auc:FieldValue]">
+      <sch:assert test="auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CondenserPlants/auc:CondenserPlant/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource Site ID']/auc:FieldValue/text() = auc:Sites/auc:Site[not(auc:Buildings/auc:Building)]/@ID/text()">element "auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CondenserPlants/auc:CondenserPlant/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource Site ID']/auc:FieldValue/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:Chiller/auc:CondenserPlantIDs/auc:CondenserPlantID]">
+      <sch:assert test="auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:Chiller/auc:CondenserPlantIDs/auc:CondenserPlantID/@IDref/text() = auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CondenserPlants/auc:CondenserPlant/@ID/text()">element "auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:Chiller/auc:CondenserPlantIDs/auc:CondenserPlantID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource Site ID']/auc:FieldValue]">
+      <sch:assert test="auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource Site ID']/auc:FieldValue/text() = auc:Sites/auc:Site[not(auc:Buildings/auc:Building)]/@ID/text()">element "auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource Site ID']/auc:FieldValue/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource Site ID']/auc:FieldValue]">
+      <sch:assert test="auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource Site ID']/auc:FieldValue/text() = auc:Sites/auc:Site[not(auc:Buildings/auc:Building)]/@ID/text()">element "auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:HeatingPlants/auc:HeatingPlant/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Shared Resource Site ID']/auc:FieldValue/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID]">
+      <sch:assert test="auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/@ID/text()">element "auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID]">
+      <sch:assert test="auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Space function']/@ID/text()">element "auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:MotorSystems/auc:MotorSystem/auc:LinkedSystemIDs/auc:LinkedSystemID]">
+      <sch:assert test="auc:Systems/auc:MotorSystems/auc:MotorSystem/auc:LinkedSystemIDs/auc:LinkedSystemID/@IDref/text() = auc:Systems/auc:HVACSystems/auc:HVACSystem/@ID/text()">element "auc:Systems/auc:MotorSystems/auc:MotorSystem/auc:LinkedSystemIDs/auc:LinkedSystemID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:OnsiteStorageTransmissionGenerationSystems/auc:OnsiteStorageTransmissionGenerationSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID]">
+      <sch:assert test="auc:Systems/auc:OnsiteStorageTransmissionGenerationSystems/auc:OnsiteStorageTransmissionGenerationSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/@ID/text()">element "auc:Systems/auc:OnsiteStorageTransmissionGenerationSystems/auc:OnsiteStorageTransmissionGenerationSystem/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:PlugLoads/auc:PlugLoad[auc:PlugLoadType/text() = 'Miscellaneous Electric Load']/auc:LinkedPremises/auc:Section/auc:LinkedSectionID]">
+      <sch:assert test="auc:Systems/auc:PlugLoads/auc:PlugLoad[auc:PlugLoadType/text() = 'Miscellaneous Electric Load']/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Space function']/@ID/text()">element "auc:Systems/auc:PlugLoads/auc:PlugLoad[auc:PlugLoadType/text() = 'Miscellaneous Electric Load']/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:ProcessLoads/auc:ProcessLoad[auc:ProcessLoadType/text() = 'Miscellaneous Gas Load']/auc:LinkedPremises/auc:Section/auc:LinkedSectionID]">
+      <sch:assert test="auc:Systems/auc:ProcessLoads/auc:ProcessLoad[auc:ProcessLoadType/text() = 'Miscellaneous Gas Load']/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/@IDref/text() = auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType/text() = 'Space function']/@ID/text()">element "auc:Systems/auc:ProcessLoads/auc:ProcessLoad[auc:ProcessLoadType/text() = 'Miscellaneous Gas Load']/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Systems/auc:PumpSystems/auc:PumpSystem/auc:LinkedSystemIDs/auc:LinkedSystemID]">
+      <sch:assert test="(auc:Systems/auc:PumpSystems/auc:PumpSystem/auc:LinkedSystemIDs/auc:LinkedSystemID/@IDref/text() = auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CondenserPlants/auc:CondenserPlant/@ID/text()) | (auc:Systems/auc:PumpSystems/auc:PumpSystem/auc:LinkedSystemIDs/auc:LinkedSystemID/@IDref/text() = auc:Systems/auc:HVACSystems/auc:HVACSystem/auc:Plants/auc:CoolingPlants/auc:CoolingPlant/@ID/text())">element "auc:Systems/auc:PumpSystems/auc:PumpSystem/auc:LinkedSystemIDs/auc:LinkedSystemID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report[auc:Scenarios/auc:Scenario/auc:ResourceUses/auc:ResourceUse/auc:UtilityIDs/auc:UtilityID]">
+      <sch:assert test="auc:Scenarios/auc:Scenario/auc:ResourceUses/auc:ResourceUse/auc:UtilityIDs/auc:UtilityID/@IDref/text() = auc:Utilities/auc:Utility/@ID/text()">element "auc:Scenarios/auc:Scenario/auc:ResourceUses/auc:ResourceUse/auc:UtilityIDs/auc:UtilityID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[auc:AllResourceTotals/auc:AllResourceTotal/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Linked Time Series ID']/auc:FieldValue]">
+      <sch:assert test="auc:AllResourceTotals/auc:AllResourceTotal/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Linked Time Series ID']/auc:FieldValue/text() = auc:TimeSeriesData/auc:TimeSeries/@ID/text()">element "auc:AllResourceTotals/auc:AllResourceTotal/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Linked Time Series ID']/auc:FieldValue/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[auc:TimeSeriesData/auc:TimeSeries/auc:ResourceUseID]">
+      <sch:assert test="auc:TimeSeriesData/auc:TimeSeries/auc:ResourceUseID/@IDref/text() = auc:ResourceUses/auc:ResourceUse/@ID/text()">element "auc:TimeSeriesData/auc:TimeSeries/auc:ResourceUseID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:OtherHVACSystems/auc:OtherHVACSystem/auc:LinkedDeliveryIDs/auc:LinkedDeliveryID]">
+      <sch:assert test="auc:OtherHVACSystems/auc:OtherHVACSystem/auc:LinkedDeliveryIDs/auc:LinkedDeliveryID/@IDref/text() = auc:HeatingAndCoolingSystems/auc:Deliveries/auc:Delivery/@ID/text()">element "auc:OtherHVACSystems/auc:OtherHVACSystem/auc:LinkedDeliveryIDs/auc:LinkedDeliveryID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:HeatingAndCoolingSystems/auc:Deliveries/auc:Delivery/auc:CoolingSourceID]">
+      <sch:assert test="auc:HeatingAndCoolingSystems/auc:Deliveries/auc:Delivery/auc:CoolingSourceID/@IDref/text() = auc:HeatingAndCoolingSystems/auc:CoolingSources/auc:CoolingSource/@ID/text()">element "auc:HeatingAndCoolingSystems/auc:Deliveries/auc:Delivery/auc:CoolingSourceID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:HeatingAndCoolingSystems/auc:Deliveries/auc:Delivery/auc:HeatingSourceID]">
+      <sch:assert test="auc:HeatingAndCoolingSystems/auc:Deliveries/auc:Delivery/auc:HeatingSourceID/@IDref/text() = auc:HeatingAndCoolingSystems/auc:HeatingSources/auc:HeatingSource/@ID/text()">element "auc:HeatingAndCoolingSystems/auc:Deliveries/auc:Delivery/auc:HeatingSourceID/@IDref/text()" is NOT FOUND</sch:assert>
+    </sch:rule>
     <sch:rule context="/">
       <sch:assert test="count(auc:BuildingSync) &gt;= 1">element "auc:BuildingSync" is REQUIRED</sch:assert>
     </sch:rule>
@@ -504,10 +654,16 @@
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Benchmark) &gt; 0)]/auc:AllResourceTotals/auc:AllResourceTotal">
       <sch:assert test="count(@ID) &gt;= 1">element "@ID" is REQUIRED</sch:assert>
+      <sch:assert test="not(auc:BuildingEnergyUse)">element "auc:BuildingEnergyUse" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:BuildingEnergyUseIntensity)">element "auc:BuildingEnergyUseIntensity" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:ElectricitySourcedFromOnsiteRenewableSystems)">element "auc:ElectricitySourcedFromOnsiteRenewableSystems" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:EndUse) &gt;= 1">element "auc:EndUse" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:EnergyCost) &gt;= 0">element "auc:EnergyCost" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:EnergyCostIndex)">element "auc:EnergyCostIndex" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ExportedEnergyConsistentUnits)">element "auc:ExportedEnergyConsistentUnits" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ImportedEnergyConsistentUnits)">element "auc:ImportedEnergyConsistentUnits" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:NetIncreaseInStoredEnergyConsistentUnits)">element "auc:NetIncreaseInStoredEnergyConsistentUnits" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:OnsiteEnergyProductionConsistentUnits)">element "auc:OnsiteEnergyProductionConsistentUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:OnsiteRenewableSystemElectricityExported)">element "auc:OnsiteRenewableSystemElectricityExported" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:ResourceBoundary) &gt;= 1">element "auc:ResourceBoundary" is REQUIRED</sch:assert>
       <sch:assert test="not(auc:SiteEnergyUse)">element "auc:SiteEnergyUse" is NOT RECOMMENDED</sch:assert>
@@ -1178,7 +1334,9 @@
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Available Energy')]/auc:ResourceUses/auc:ResourceUse">
       <sch:assert test="count(@ID) &gt;= 1">element "@ID" is REQUIRED</sch:assert>
+      <sch:assert test="not(auc:AnnualFuelCost)">element "auc:AnnualFuelCost" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:AnnualFuelUseConsistentUnits)">element "auc:AnnualFuelUseConsistentUnits" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:AnnualFuelUseLinkedTimeSeriesIDs)">element "auc:AnnualFuelUseLinkedTimeSeriesIDs" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:AnnualFuelUseNativeUnits)">element "auc:AnnualFuelUseNativeUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:AnnualPeakConsistentUnits)">element "auc:AnnualPeakConsistentUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:AnnualPeakNativeUnits)">element "auc:AnnualPeakNativeUnits" is NOT RECOMMENDED</sch:assert>
@@ -1191,6 +1349,7 @@
       <sch:assert test="not(auc:PercentResource)">element "auc:PercentResource" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:ResourceBoundary) &gt;= 1">element "auc:ResourceBoundary" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:ResourceUnits) &gt;= 0">element "auc:ResourceUnits" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:ResourceUseNotes)">element "auc:ResourceUseNotes" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:SharedResourceSystem) &gt;= 0">element "auc:SharedResourceSystem" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:UserDefinedFields)">element "auc:UserDefinedFields" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:UtilityIDs)">element "auc:UtilityIDs" is NOT RECOMMENDED</sch:assert>
@@ -2197,6 +2356,7 @@
       <sch:assert test="not(auc:AnnualWaterSavings)">element "auc:AnnualWaterSavings" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:AssetScore)">element "auc:AssetScore" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CalculationMethodType)">element "auc:CalculationMethodType" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:CostCategory)">element "auc:CostCategory" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CostEffectivenessScreeningMethod)">element "auc:CostEffectivenessScreeningMethod" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:ENERGYSTARScore)">element "auc:ENERGYSTARScore" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:EquipmentDisposalAndSalvageCosts)">element "auc:EquipmentDisposalAndSalvageCosts" is NOT RECOMMENDED</sch:assert>
@@ -2216,6 +2376,7 @@
       <sch:assert test="not(auc:ProjectMarkup)">element "auc:ProjectMarkup" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:RecurringIncentives)">element "auc:RecurringIncentives" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:ReferenceCase)">element "auc:ReferenceCase" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:SimpleImpactAnalysis)">element "auc:SimpleImpactAnalysis" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:SimplePayback)">element "auc:SimplePayback" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:SummerPeakElectricityReduction)">element "auc:SummerPeakElectricityReduction" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:UserDefinedFields)">element "auc:UserDefinedFields" is NOT RECOMMENDED</sch:assert>
@@ -2534,6 +2695,7 @@
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Schedules/auc:Schedule">
       <sch:assert test="count(@ID) &gt;= 1">element "@ID" is REQUIRED</sch:assert>
       <sch:assert test="not(@Status)">element "@Status" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:LinkedPremises)">element "auc:LinkedPremises" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:ScheduleDetails) &gt;= 0">element "auc:ScheduleDetails" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:SchedulePeriodBeginDate)">element "auc:SchedulePeriodBeginDate" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:SchedulePeriodEndDate)">element "auc:SchedulePeriodEndDate" is NOT RECOMMENDED</sch:assert>
@@ -2712,6 +2874,7 @@
       <sch:assert test="count(auc:FloorArea) &gt;= 0">element "auc:FloorArea" is OPTIONAL</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:FloorAreas/auc:FloorArea">
+      <sch:assert test="not(auc:ExcludedSectionIDs)">element "auc:ExcludedSectionIDs" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FloorAreaCustomName)">element "auc:FloorAreaCustomName" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FloorAreaPercentage)">element "auc:FloorAreaPercentage" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:FloorAreaType) &gt;= 1">element "auc:FloorAreaType" is REQUIRED</sch:assert>
@@ -2823,6 +2986,7 @@
       <sch:assert test="count(auc:FloorArea) &gt;= 0">element "auc:FloorArea" is OPTIONAL</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType = 'Space function']/auc:FloorAreas/auc:FloorArea">
+      <sch:assert test="not(auc:ExcludedSectionIDs)">element "auc:ExcludedSectionIDs" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FloorAreaCustomName)">element "auc:FloorAreaCustomName" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FloorAreaPercentage)">element "auc:FloorAreaPercentage" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:FloorAreaType) &gt;= 1">element "auc:FloorAreaType" is REQUIRED</sch:assert>
@@ -4009,6 +4173,7 @@
       <sch:assert test="count(auc:FloorArea) &gt;= 0">element "auc:FloorArea" is OPTIONAL</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:DomesticHotWaterSystems/auc:DomesticHotWaterSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/auc:FloorAreas/auc:FloorArea">
+      <sch:assert test="not(auc:ExcludedSectionIDs)">element "auc:ExcludedSectionIDs" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FloorAreaCustomName)">element "auc:FloorAreaCustomName" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:FloorAreaPercentage) &gt;= 1">element "auc:FloorAreaPercentage" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:FloorAreaType) &gt;= 1">element "auc:FloorAreaType" is REQUIRED</sch:assert>
@@ -4519,6 +4684,7 @@
       <sch:assert test="not(auc:DuctSystems)">element "auc:DuctSystems" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FrequencyOfMaintenance)">element "auc:FrequencyOfMaintenance" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Location)">element "auc:Location" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:PrincipalHVACSystemType)">element "auc:PrincipalHVACSystemType" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Priority)">element "auc:Priority" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Quantity)">element "auc:Quantity" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
@@ -5637,6 +5803,7 @@
       <sch:assert test="count(auc:FloorArea) &gt;= 0">element "auc:FloorArea" is OPTIONAL</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[not(auc:Plants)]/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/auc:FloorAreas/auc:FloorArea">
+      <sch:assert test="not(auc:ExcludedSectionIDs)">element "auc:ExcludedSectionIDs" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FloorAreaCustomName)">element "auc:FloorAreaCustomName" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:FloorAreaPercentage) &gt;= 1">element "auc:FloorAreaPercentage" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:FloorAreaType) &gt;= 1">element "auc:FloorAreaType" is REQUIRED</sch:assert>
@@ -6069,6 +6236,7 @@
       <sch:assert test="count(auc:FloorArea) &gt;= 0">element "auc:FloorArea" is OPTIONAL</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:LinkedPremises/auc:Section/auc:LinkedSectionID/auc:FloorAreas/auc:FloorArea">
+      <sch:assert test="not(auc:ExcludedSectionIDs)">element "auc:ExcludedSectionIDs" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FloorAreaCustomName)">element "auc:FloorAreaCustomName" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:FloorAreaPercentage) &gt;= 0">element "auc:FloorAreaPercentage" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:FloorAreaType) &gt;= 1">element "auc:FloorAreaType" is REQUIRED</sch:assert>
