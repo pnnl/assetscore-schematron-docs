@@ -2,6 +2,7 @@
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
   <sch:title>Audit Template</sch:title>
   <sch:ns prefix="auc" uri="http://buildingsync.net/schemas/bedes-auc/2019"/>
+  <sch:ns prefix="gbxml" uri="http://www.gbxml.org/schema"/>
   <sch:pattern>
     <sch:title>New York City Energy Efficiency Report</sch:title>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility[auc:Measures/auc:Measure/auc:LinkedPremises/auc:Building/auc:LinkedBuildingID]">
@@ -162,7 +163,7 @@
       <sch:assert test="count(auc:Facilities) &gt;= 1">element "auc:Facilities" is REQUIRED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/@version">
-      <sch:assert test="contains('_2.0.0_ _2.1.0_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "2.0.0" or "2.1.0"</sch:assert>
+      <sch:assert test="contains('_2.0.0_ _2.1.0_ _2.2.0_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "2.0.0", "2.1.0", or "2.2.0"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities">
       <sch:assert test="count(auc:Facility) &gt;= 1">element "auc:Facility" is REQUIRED</sch:assert>
@@ -1009,6 +1010,8 @@
       <sch:assert test="not(auc:EndUse)">element "auc:EndUse" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:EnergyResource)">element "auc:EnergyResource" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FuelUseIntensity)">element "auc:FuelUseIntensity" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:MeterID)">element "auc:MeterID" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ParentResourceUseID)">element "auc:ParentResourceUseID" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PeakResourceUnits)">element "auc:PeakResourceUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentEndUse)">element "auc:PercentEndUse" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentResource)">element "auc:PercentResource" is NOT RECOMMENDED</sch:assert>
@@ -1193,6 +1196,8 @@
       <sch:assert test="not(auc:EndUse)">element "auc:EndUse" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:EnergyResource) &gt;= 0">element "auc:EnergyResource" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:FuelUseIntensity)">element "auc:FuelUseIntensity" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:MeterID)">element "auc:MeterID" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ParentResourceUseID)">element "auc:ParentResourceUseID" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PeakResourceUnits)">element "auc:PeakResourceUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentEndUse)">element "auc:PercentEndUse" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentResource)">element "auc:PercentResource" is NOT RECOMMENDED</sch:assert>
@@ -1247,16 +1252,19 @@
       <sch:assert test="not(auc:CoolingDegreeDays)">element "auc:CoolingDegreeDays" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:EndTimestamp) &gt;= 0">element "auc:EndTimestamp" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:EnergyFlowDirection)">element "auc:EnergyFlowDirection" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:HDDBaseTemperature)">element "auc:HDDBaseTemperature" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:HeatingDegreeDays)">element "auc:HeatingDegreeDays" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:IntervalDuration)">element "auc:IntervalDuration" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:IntervalDurationUnits)">element "auc:IntervalDurationUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:IntervalFrequency) &gt;= 1">element "auc:IntervalFrequency" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:IntervalReading) &gt;= 0">element "auc:IntervalReading" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:PeakType)">element "auc:PeakType" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Phase)">element "auc:Phase" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:ReadingType) &gt;= 1">element "auc:ReadingType" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:ResourceUseID) &gt;= 0">element "auc:ResourceUseID" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:StartTimestamp) &gt;= 0">element "auc:StartTimestamp" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:TimeSeriesReadingQuantity) &gt;= 1">element "auc:TimeSeriesReadingQuantity" is REQUIRED</sch:assert>
       <sch:assert test="not(auc:UserDefinedFields)">element "auc:UserDefinedFields" is NOT RECOMMENDED</sch:assert>
-      <sch:assert test="not(auc:hDDBaseTemperature)">element "auc:hDDBaseTemperature" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Annual Summary')]/auc:TimeSeriesData/auc:TimeSeries/auc:IntervalFrequency">
       <sch:assert test="contains('_Annual_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Annual"</sch:assert>
@@ -1344,6 +1352,8 @@
       <sch:assert test="count(auc:EndUse) &gt;= 1">element "auc:EndUse" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:EnergyResource) &gt;= 0">element "auc:EnergyResource" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:FuelUseIntensity)">element "auc:FuelUseIntensity" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:MeterID)">element "auc:MeterID" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ParentResourceUseID)">element "auc:ParentResourceUseID" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PeakResourceUnits)">element "auc:PeakResourceUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentEndUse)">element "auc:PercentEndUse" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentResource)">element "auc:PercentResource" is NOT RECOMMENDED</sch:assert>
@@ -1525,16 +1535,19 @@
       <sch:assert test="not(auc:CoolingDegreeDays)">element "auc:CoolingDegreeDays" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:EndTimestamp) &gt;= 0">element "auc:EndTimestamp" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:EnergyFlowDirection)">element "auc:EnergyFlowDirection" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:HDDBaseTemperature)">element "auc:HDDBaseTemperature" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:HeatingDegreeDays)">element "auc:HeatingDegreeDays" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:IntervalDuration)">element "auc:IntervalDuration" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:IntervalDurationUnits)">element "auc:IntervalDurationUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:IntervalFrequency) &gt;= 1">element "auc:IntervalFrequency" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:IntervalReading) &gt;= 0">element "auc:IntervalReading" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:PeakType)">element "auc:PeakType" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Phase)">element "auc:Phase" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:ReadingType) &gt;= 1">element "auc:ReadingType" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:ResourceUseID) &gt;= 0">element "auc:ResourceUseID" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:StartTimestamp) &gt;= 0">element "auc:StartTimestamp" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:TimeSeriesReadingQuantity) &gt;= 1">element "auc:TimeSeriesReadingQuantity" is REQUIRED</sch:assert>
       <sch:assert test="not(auc:UserDefinedFields)">element "auc:UserDefinedFields" is NOT RECOMMENDED</sch:assert>
-      <sch:assert test="not(auc:hDDBaseTemperature)">element "auc:hDDBaseTemperature" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Energy Deliveries')]/auc:TimeSeriesData/auc:TimeSeries/auc:IntervalFrequency">
       <sch:assert test="contains('_Day_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Day"</sch:assert>
@@ -1688,16 +1701,19 @@
       <sch:assert test="not(auc:CoolingDegreeDays)">element "auc:CoolingDegreeDays" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:EndTimestamp) &gt;= 0">element "auc:EndTimestamp" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:EnergyFlowDirection)">element "auc:EnergyFlowDirection" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:HDDBaseTemperature)">element "auc:HDDBaseTemperature" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:HeatingDegreeDays)">element "auc:HeatingDegreeDays" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:IntervalDuration)">element "auc:IntervalDuration" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:IntervalDurationUnits)">element "auc:IntervalDurationUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:IntervalFrequency) &gt;= 1">element "auc:IntervalFrequency" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:IntervalReading) &gt;= 0">element "auc:IntervalReading" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:PeakType)">element "auc:PeakType" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Phase)">element "auc:Phase" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:ReadingType) &gt;= 1">element "auc:ReadingType" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:ResourceUseID) &gt;= 0">element "auc:ResourceUseID" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:StartTimestamp) &gt;= 0">element "auc:StartTimestamp" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:TimeSeriesReadingQuantity) &gt;= 1">element "auc:TimeSeriesReadingQuantity" is REQUIRED</sch:assert>
       <sch:assert test="not(auc:UserDefinedFields)">element "auc:UserDefinedFields" is NOT RECOMMENDED</sch:assert>
-      <sch:assert test="not(auc:hDDBaseTemperature)">element "auc:hDDBaseTemperature" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Energy Meter Readings')]/auc:TimeSeriesData/auc:TimeSeries/auc:IntervalFrequency">
       <sch:assert test="contains('_Other_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Other"</sch:assert>
@@ -1775,6 +1791,8 @@
       <sch:assert test="count(auc:EndUse) &gt;= 0">element "auc:EndUse" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:EnergyResource) &gt;= 0">element "auc:EnergyResource" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:FuelUseIntensity)">element "auc:FuelUseIntensity" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:MeterID)">element "auc:MeterID" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ParentResourceUseID)">element "auc:ParentResourceUseID" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PeakResourceUnits)">element "auc:PeakResourceUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentEndUse)">element "auc:PercentEndUse" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentResource)">element "auc:PercentResource" is NOT RECOMMENDED</sch:assert>
@@ -1889,6 +1907,8 @@
       <sch:assert test="count(auc:EndUse) &gt;= 0">element "auc:EndUse" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:EnergyResource) &gt;= 0">element "auc:EnergyResource" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:FuelUseIntensity)">element "auc:FuelUseIntensity" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:MeterID)">element "auc:MeterID" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ParentResourceUseID)">element "auc:ParentResourceUseID" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PeakResourceUnits)">element "auc:PeakResourceUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentEndUse)">element "auc:PercentEndUse" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentResource)">element "auc:PercentResource" is NOT RECOMMENDED</sch:assert>
@@ -2069,6 +2089,8 @@
       <sch:assert test="not(auc:EndUse)">element "auc:EndUse" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:EnergyResource) &gt;= 0">element "auc:EnergyResource" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:FuelUseIntensity)">element "auc:FuelUseIntensity" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:MeterID)">element "auc:MeterID" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ParentResourceUseID)">element "auc:ParentResourceUseID" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PeakResourceUnits)">element "auc:PeakResourceUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentEndUse)">element "auc:PercentEndUse" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentResource)">element "auc:PercentResource" is NOT RECOMMENDED</sch:assert>
@@ -2123,16 +2145,19 @@
       <sch:assert test="not(auc:CoolingDegreeDays)">element "auc:CoolingDegreeDays" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:EndTimestamp) &gt;= 0">element "auc:EndTimestamp" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:EnergyFlowDirection)">element "auc:EnergyFlowDirection" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:HDDBaseTemperature)">element "auc:HDDBaseTemperature" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:HeatingDegreeDays)">element "auc:HeatingDegreeDays" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:IntervalDuration)">element "auc:IntervalDuration" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:IntervalDurationUnits)">element "auc:IntervalDurationUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:IntervalFrequency) &gt;= 1">element "auc:IntervalFrequency" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:IntervalReading) &gt;= 0">element "auc:IntervalReading" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:PeakType)">element "auc:PeakType" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Phase)">element "auc:Phase" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:ReadingType) &gt;= 1">element "auc:ReadingType" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:ResourceUseID) &gt;= 0">element "auc:ResourceUseID" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:StartTimestamp) &gt;= 0">element "auc:StartTimestamp" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:TimeSeriesReadingQuantity) &gt;= 1">element "auc:TimeSeriesReadingQuantity" is REQUIRED</sch:assert>
       <sch:assert test="not(auc:UserDefinedFields)">element "auc:UserDefinedFields" is NOT RECOMMENDED</sch:assert>
-      <sch:assert test="not(auc:hDDBaseTemperature)">element "auc:hDDBaseTemperature" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report/auc:Scenarios/auc:Scenario[(count(auc:ScenarioType/auc:Other) &gt; 0) and (auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'Other Scenario Type']/auc:FieldValue/text() = 'Audit Template Shared Resource System Annual Summary')]/auc:TimeSeriesData/auc:TimeSeries/auc:IntervalFrequency">
       <sch:assert test="contains('_Annual_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Annual"</sch:assert>
@@ -2210,6 +2235,8 @@
       <sch:assert test="count(auc:EndUse) &gt;= 0">element "auc:EndUse" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:EnergyResource) &gt;= 0">element "auc:EnergyResource" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:FuelUseIntensity)">element "auc:FuelUseIntensity" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:MeterID)">element "auc:MeterID" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ParentResourceUseID)">element "auc:ParentResourceUseID" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PeakResourceUnits)">element "auc:PeakResourceUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentEndUse)">element "auc:PercentEndUse" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PercentResource)">element "auc:PercentResource" is NOT RECOMMENDED</sch:assert>
@@ -2303,6 +2330,7 @@
       <sch:assert test="not(auc:CDDBaseTemperature)">element "auc:CDDBaseTemperature" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:HDDBaseTemperature)">element "auc:HDDBaseTemperature" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:LinkedPremises) &gt;= 1">element "auc:LinkedPremises" is REQUIRED</sch:assert>
+      <sch:assert test="not(auc:NonquantifiableFactors)">element "auc:NonquantifiableFactors" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Normalization)">element "auc:Normalization" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:ResourceUses)">element "auc:ResourceUses" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:ScenarioName) &gt;= 0">element "auc:ScenarioName" is OPTIONAL</sch:assert>
@@ -2649,6 +2677,7 @@
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Reports/auc:Report[auc:LinkedPremisesOrSystem/auc:Building/auc:LinkedBuildingID]/auc:Utilities/auc:Utility">
       <sch:assert test="count(@ID) &gt;= 1">element "@ID" is REQUIRED</sch:assert>
+      <sch:assert test="not(auc:EIAUtilityID)">element "auc:EIAUtilityID" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:ElectricDistributionUtility)">element "auc:ElectricDistributionUtility" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:FuelInterruptibility)">element "auc:FuelInterruptibility" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:MeteringConfiguration) &gt;= 0">element "auc:MeteringConfiguration" is OPTIONAL</sch:assert>
@@ -2776,6 +2805,7 @@
       <sch:assert test="count(auc:HistoricalLandmark) &gt;= 0">element "auc:HistoricalLandmark" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:HorizontalSurroundings)">element "auc:HorizontalSurroundings" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:Latitude) &gt;= 0">element "auc:Latitude" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:LightingAutomationSystem)">element "auc:LightingAutomationSystem" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:Longitude) &gt;= 0">element "auc:Longitude" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:NAICSCode)">element "auc:NAICSCode" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:NumberOfBusinesses)">element "auc:NumberOfBusinesses" is NOT RECOMMENDED</sch:assert>
@@ -2783,6 +2813,7 @@
       <sch:assert test="not(auc:OccupancyClassification)">element "auc:OccupancyClassification" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:OccupancyLevels)">element "auc:OccupancyLevels" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:OperatorType)">element "auc:OperatorType" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:OverallDoorToWallRatio)">element "auc:OverallDoorToWallRatio" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:OverallWindowToWallRatio) &gt;= 0">element "auc:OverallWindowToWallRatio" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Ownership) &gt;= 0">element "auc:Ownership" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:OwnershipStatus)">element "auc:OwnershipStatus" is NOT RECOMMENDED</sch:assert>
@@ -2948,6 +2979,7 @@
       <sch:assert test="not(auc:FloorsPartiallyBelowGrade)">element "auc:FloorsPartiallyBelowGrade" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Latitude)">element "auc:Latitude" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Longitude)">element "auc:Longitude" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:NumberOfSides)">element "auc:NumberOfSides" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PerimeterZoneDepth)">element "auc:PerimeterZoneDepth" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PremisesIdentifiers)">element "auc:PremisesIdentifiers" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:PremisesName)">element "auc:PremisesName" is NOT RECOMMENDED</sch:assert>
@@ -3188,11 +3220,14 @@
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType = 'Whole building']/auc:Sides/auc:Side">
       <sch:assert test="count(auc:DoorID) &gt;= 0">element "auc:DoorID" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:DoorIDs)">element "auc:DoorIDs" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:SideLength)">element "auc:SideLength" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:SideNumber)">element "auc:SideNumber" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:ThermalZoneIDs)">element "auc:ThermalZoneIDs" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:WallID) &gt;= 0">element "auc:WallID" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:WallIDs)">element "auc:WallIDs" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:WindowID) &gt;= 0">element "auc:WindowID" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:WindowIDs)">element "auc:WindowIDs" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Sites/auc:Site/auc:Buildings/auc:Building/auc:Sections/auc:Section[auc:SectionType = 'Whole building']/auc:Sides/auc:Side/auc:DoorID">
       <sch:assert test="count(@IDref) &gt;= 1">element "@IDref" is REQUIRED</sch:assert>
@@ -3695,6 +3730,7 @@
       <sch:assert test="not(auc:ConveyanceLoadType)">element "auc:ConveyanceLoadType" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:ConveyancePeakPower)">element "auc:ConveyancePeakPower" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:ConveyanceStandbyPower)">element "auc:ConveyanceStandbyPower" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:ConveyanceSystemCondition)">element "auc:ConveyanceSystemCondition" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:ConveyanceSystemType) &gt;= 1">element "auc:ConveyanceSystemType" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:LinkedPremises) &gt;= 1">element "auc:LinkedPremises" is REQUIRED</sch:assert>
       <sch:assert test="not(auc:Location)">element "auc:Location" is NOT RECOMMENDED</sch:assert>
@@ -3970,6 +4006,8 @@
       <sch:assert test="not(auc:CapacityUnits)">element "auc:CapacityUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:Controls) &gt;= 0">element "auc:Controls" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:DailyHotWaterDraw)">element "auc:DailyHotWaterDraw" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:DomesticHotWaterSystemCondition)">element "auc:DomesticHotWaterSystemCondition" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:DomesticHotWaterSystemNotes)">element "auc:DomesticHotWaterSystemNotes" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:DomesticHotWaterType) &gt;= 1">element "auc:DomesticHotWaterType" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:HotWaterDistributionType) &gt;= 0">element "auc:HotWaterDistributionType" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:HotWaterSetpointTemperature)">element "auc:HotWaterSetpointTemperature" is NOT RECOMMENDED</sch:assert>
@@ -4746,6 +4784,8 @@
       <sch:assert test="not(auc:YearInstalled)">element "auc:YearInstalled" is NOT RECOMMENDED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:CondenserPlants/auc:CondenserPlant/auc:GroundSource">
+      <sch:assert test="not(auc:Capacity)">element "auc:Capacity" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:CapacityUnits)">element "auc:CapacityUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CondenserWaterTemperature)">element "auc:CondenserWaterTemperature" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CondensingTemperature)">element "auc:CondensingTemperature" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:GroundSourceType) &gt;= 0">element "auc:GroundSourceType" is OPTIONAL</sch:assert>
@@ -4780,6 +4820,8 @@
       <sch:assert test="contains('_false_ _true_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "false" or "true"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:HVACSystems/auc:HVACSystem[auc:Plants]/auc:Plants/auc:CondenserPlants/auc:CondenserPlant/auc:WaterCooled">
+      <sch:assert test="not(auc:Capacity)">element "auc:Capacity" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:CapacityUnits)">element "auc:CapacityUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CellCount)">element "auc:CellCount" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CondenserWaterTemperature)">element "auc:CondenserWaterTemperature" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:CondensingTemperature)">element "auc:CondensingTemperature" is NOT RECOMMENDED</sch:assert>
@@ -5044,6 +5086,7 @@
       <sch:assert test="not(auc:BurnerTurndownRatio)">element "auc:BurnerTurndownRatio" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:BurnerType)">element "auc:BurnerType" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:BurnerYearInstalled) &gt;= 0">element "auc:BurnerYearInstalled" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:Capacity)">element "auc:Capacity" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:CapacityUnits) &gt;= 1">element "auc:CapacityUnits" is REQUIRED</sch:assert>
       <sch:assert test="not(auc:CombustionEfficiency)">element "auc:CombustionEfficiency" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:CondensingOperation) &gt;= 0">element "auc:CondensingOperation" is OPTIONAL</sch:assert>
@@ -5123,6 +5166,7 @@
       <sch:assert test="count(auc:AnnualHeatingEfficiencyUnits) &gt;= 0">element "auc:AnnualHeatingEfficiencyUnits" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:AnnualHeatingEfficiencyValue) &gt;= 0">element "auc:AnnualHeatingEfficiencyValue" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:BoilerLWT)">element "auc:BoilerLWT" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="not(auc:Capacity)">element "auc:Capacity" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:CapacityUnits) &gt;= 1">element "auc:CapacityUnits" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:DistrictHeatingType) &gt;= 0">element "auc:DistrictHeatingType" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:HotWaterBoilerMaximumFlowRate)">element "auc:HotWaterBoilerMaximumFlowRate" is NOT RECOMMENDED</sch:assert>
@@ -5432,6 +5476,7 @@
       <sch:assert test="not(auc:CapacityUnits)">element "auc:CapacityUnits" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:Controls)">element "auc:Controls" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:CoolingSourceID) &gt;= 0">element "auc:CoolingSourceID" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:DeliveryCondition)">element "auc:DeliveryCondition" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:HeatingSourceID) &gt;= 0">element "auc:HeatingSourceID" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:Manufacturer)">element "auc:Manufacturer" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:ModelNumber)">element "auc:ModelNumber" is NOT RECOMMENDED</sch:assert>
@@ -5568,6 +5613,7 @@
       <sch:assert test="not(@Status)">element "@Status" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:AnnualHeatingEfficiencyUnits) &gt;= 0">element "auc:AnnualHeatingEfficiencyUnits" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:AnnualHeatingEfficiencyValue) &gt;= 0">element "auc:AnnualHeatingEfficiencyValue" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:Capacity)">element "auc:Capacity" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:CapacityUnits) &gt;= 1">element "auc:CapacityUnits" is REQUIRED</sch:assert>
       <sch:assert test="count(auc:Controls) &gt;= 0">element "auc:Controls" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:HeatingMedium)">element "auc:HeatingMedium" is NOT RECOMMENDED</sch:assert>
@@ -6040,6 +6086,7 @@
       <sch:assert test="not(auc:InstalledPower)">element "auc:InstalledPower" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:LampPower) &gt;= 0">element "auc:LampPower" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:LampType) &gt;= 0">element "auc:LampType" is OPTIONAL</sch:assert>
+      <sch:assert test="not(auc:LightingAutomationSystem)">element "auc:LightingAutomationSystem" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:LightingDirection)">element "auc:LightingDirection" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="not(auc:LightingEfficacy)">element "auc:LightingEfficacy" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="count(auc:LinkedPremises) &gt;= 1">element "auc:LinkedPremises" is REQUIRED</sch:assert>
