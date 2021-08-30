@@ -288,7 +288,7 @@
       <sch:assert test="count(auc:MeasureInstallationCost) &gt;= 0">element "auc:MeasureInstallationCost" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:MeasureMaterialCost) &gt;= 0">element "auc:MeasureMaterialCost" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:MeasureSavingsAnalysis) &gt;= 0">element "auc:MeasureSavingsAnalysis" is OPTIONAL</sch:assert>
-      <sch:assert test="not(auc:MeasureScaleOfApplication)">element "auc:MeasureScaleOfApplication" is NOT RECOMMENDED</sch:assert>
+      <sch:assert test="count(auc:MeasureScaleOfApplication) &gt;= 0">element "auc:MeasureScaleOfApplication" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:MeasureTotalFirstCost) &gt;= 0">element "auc:MeasureTotalFirstCost" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:Recommended) &gt;= 0">element "auc:Recommended" is OPTIONAL</sch:assert>
       <sch:assert test="not(auc:ResidualValue)">element "auc:ResidualValue" is NOT RECOMMENDED</sch:assert>
@@ -370,6 +370,9 @@
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Measures/auc:Measure/auc:MeasureSavingsAnalysis/auc:OMCostAnnualSavings">
       <sch:assert test="not(@Source)">element "@Source" is NOT RECOMMENDED</sch:assert>
       <sch:assert test="(number(text()) = text()) and (number() &gt;= 0)">text "<sch:value-of select="text()"/>": element "text()" MUST be a number and MUST be greater than or equal to 0</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Measures/auc:Measure/auc:MeasureScaleOfApplication">
+      <sch:assert test="contains('_Common areas_ _Entire building_ _Tenant areas_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Common areas", "Entire building", or "Tenant areas"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Measures/auc:Measure/auc:MeasureTotalFirstCost">
       <sch:assert test="not(@Source)">element "@Source" is NOT RECOMMENDED</sch:assert>
@@ -6359,6 +6362,8 @@
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:UserDefinedFields">
       <sch:assert test="count(auc:UserDefinedField) &gt;= 0">element "auc:UserDefinedField" is OPTIONAL</sch:assert>
+      <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'LED Application Type Is Not Applicable']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'LED Application Type Is Not Applicable']/auc:FieldValue" is OPTIONAL</sch:assert>
+      <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'LED Application Type']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'LED Application Type']/auc:FieldValue" is OPTIONAL</sch:assert>
       <sch:assert test="count(auc:UserDefinedField[auc:FieldName/text() = 'Lighting System Name']/auc:FieldValue) &gt;= 0">element "auc:UserDefinedField[auc:FieldName/text() = 'Lighting System Name']/auc:FieldValue" is OPTIONAL</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:UserDefinedFields/auc:UserDefinedField">
@@ -6366,7 +6371,13 @@
       <sch:assert test="count(auc:FieldValue) &gt;= 1">element "auc:FieldValue" is REQUIRED</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:UserDefinedFields/auc:UserDefinedField/auc:FieldName">
-      <sch:assert test="contains('_Lighting System Name_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Lighting System Name"</sch:assert>
+      <sch:assert test="contains('_Lighting System Name_ _LED Application Type_ _LED Application Type Is Not Applicable_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "Lighting System Name", "LED Application Type", or "LED Application Type Is Not Applicable"</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'LED Application Type Is Not Applicable']/auc:FieldValue">
+      <sch:assert test="contains('_false_ _true_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "false" or "true"</sch:assert>
+    </sch:rule>
+    <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:LightingSystems/auc:LightingSystem/auc:UserDefinedFields/auc:UserDefinedField[auc:FieldName/text() = 'LED Application Type']/auc:FieldValue">
+      <sch:assert test="contains('_A Lamp_ _Candelabras_ _Floodlight_ _Outdoor_ _PAR_ _Replacement for Fluorescent Tube_ _Spotlight_', concat('_', text(), '_'))">text "<sch:value-of select="text()"/>": element "text()" MUST be "A Lamp", "Candelabras", "Floodlight", "Outdoor", "PAR", "Replacement for Fluorescent Tube", or "Spotlight"</sch:assert>
     </sch:rule>
     <sch:rule context="/auc:BuildingSync/auc:Facilities/auc:Facility/auc:Systems/auc:MotorSystems">
       <sch:assert test="count(auc:MotorSystem) &gt;= 0">element "auc:MotorSystem" is OPTIONAL</sch:assert>
